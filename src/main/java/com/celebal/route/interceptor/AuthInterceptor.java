@@ -31,8 +31,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         long timeTaken = System.currentTimeMillis() - startTime;
         log.info("Ends :: Request URI::" + request.getRequestURI() + ":: total Time Taken in ms=" + timeTaken);
         if (request.getMethod() != null &&
-                !(request.getRequestURI().equalsIgnoreCase("/initializeToken")
-                        || request.getRequestURI().equalsIgnoreCase("/bulk-upload-shopkeeper-details"))) {
+                !(request.getRequestURI().equalsIgnoreCase("/initializeToken"))) {
             String uuid = MDC.get("uuid");
             apiReqRespService.insertApiReqResponse(request, response, timeTaken,uuid);
         }
